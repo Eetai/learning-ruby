@@ -1,0 +1,17 @@
+require 'open-uri'
+require 'json'
+
+request_uri = 'http://mtgjson.com/json/10E.json'
+request_query = ''
+url = "#{request_uri}#{request_query}"
+
+buffer = open(url).read
+
+result = JSON.parse(buffer)
+cards = result["cards"]
+
+print "Name a card"
+namedcard = gets.chomp
+
+card = cards.find {|x| x['name'] == namedcard }
+print card
