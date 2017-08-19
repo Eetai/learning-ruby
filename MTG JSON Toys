@@ -1,3 +1,5 @@
+# pulls json from a mtg set, then provides card data for the named card in that set
+
 require 'open-uri'
 require 'json'
 
