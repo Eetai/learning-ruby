@@ -1,4 +1,3 @@
-
 require 'json'
 file = File.read("allcards.json")
 result = JSON.parse(file)
@@ -14,4 +13,6 @@ namedcolor = gets.chomp
 colorresults = result.select {|k,v| v["colors"].include?(namedcolor) if v["colors"]}
 puts "There are #{colorresults.count} cards of that color in Magic" 
 bothresults = result.select {|k,v| v["colors"].include?(namedcolor) if v["colors"] && v["subtypes"].include?(namedsubtype) if v["subtypes"]} 
-puts "There are #{bothresults.count} cards of that color and subtype in Magic" 
+puts "There are #{bothresults.count} cards of that color and subtype in Magic:" 
+bothresults.each {|k,v| puts "#{v["manaCost"] if v["manaCost"]} - #{k} -  #{v["power"] if v["power"]} / #{v["toughness"] if v["toughness"]} 
+                    #{v["text"] if v["text"]} \n\n"}
